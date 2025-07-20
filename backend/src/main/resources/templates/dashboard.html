@@ -1,0 +1,48 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h2>Welcome, <span th:text="${user.fullName}">User</span></h2>
+
+<form method="get" th:action="@{/dashboard}">
+    <label>Filter by City:</label>
+    <select name="city">
+        <option th:each="city : ${cities}" th:value="${city}" th:text="${city}">City</option>
+    </select>
+
+    <label>Filter by Type:</label>
+    <select name="type">
+        <option value="">All</option>
+        <option value="SERVICE">Services</option>
+        <option value="JOB">Jobs</option>
+    </select>
+
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<h3>Latest Listings</h3>
+<div th:if="${listings.isEmpty()}">
+    <p>No listings found.</p>
+</div>
+
+<div th:each="listing : ${listings}">
+    <h4 th:text="${listing.title}">Title</h4>
+    <p th:text="${listing.description}">Description</p>
+    <p><strong>Type:</strong> <span th:text="${listing.type}">SERVICE</span></p>
+    <p><strong>City:</strong> <span th:text="${listing.city}">City</span></p>
+    <p><strong>By:</strong> <span th:text="${listing.ownerName}">Owner</span></p>
+    <hr>
+</div>
+
+<a th:href="@{/my-listings}">📂 My Listings</a> |
+<a th:href="@{/listings/new}">➕ Add Listing</a> |
+<a th:href="@{/logout}">🚪 Logout</a>
+
+</body>
+</html>
