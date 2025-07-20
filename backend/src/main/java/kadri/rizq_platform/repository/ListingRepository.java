@@ -19,4 +19,6 @@ public interface ListingRepository extends JpaRepository<Listing, Long> {
     Page<Listing> findByCityAndTitleContainingIgnoreCase(String city, String keyword, Pageable pageable);
 
     Page<Listing> findByOwnerId(Long ownerId, Pageable pageable);
+
+
 }

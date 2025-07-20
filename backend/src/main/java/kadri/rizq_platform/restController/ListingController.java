@@ -45,7 +45,7 @@ public class ListingController {
     public ResponseEntity<Page<ListingDto>> getMyListings(Principal principal,
                                                           @RequestParam(defaultValue = "0") int page,
                                                           @RequestParam(defaultValue = "10") int size) {
-        User user = userRepository.findByUsername(principal.getName())
+        User user = userRepository.findByUsername(principal.getName()) // we have to call findMyListings
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         return ResponseEntity.ok(listingService.getMyListings(user.getId(), page, size));
