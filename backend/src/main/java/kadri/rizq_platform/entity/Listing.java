@@ -2,6 +2,7 @@ package kadri.rizq_platform.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 @Getter
@@ -31,6 +32,6 @@ public class Listing {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User owner;
-
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @CreatedDate
+    private LocalDateTime createdAt;
 }

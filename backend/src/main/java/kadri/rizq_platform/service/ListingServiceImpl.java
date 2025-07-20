@@ -15,6 +15,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.security.access.AccessDeniedException;
+import java.time.LocalDateTime;
+import java.util.NoSuchElementException;
 
 
 @Slf4j
@@ -81,8 +83,9 @@ public class ListingServiceImpl implements ListingService {
                 .description(dto.description())
                 .city(dto.city())
                 .type(dto.type())
-                .contactInfo(user.getPhoneNumber()) //  سحب الرقم من الحساب المسجل
                 .owner(user)
+                .contactInfo(user.getPhoneNumber())
+                .createdAt(LocalDateTime.now())
                 .build();
 
         listingRepository.save(listing);
@@ -90,6 +93,18 @@ public class ListingServiceImpl implements ListingService {
         log.info("Listing created by {}", username);
         return mapToDto(listing);
     }
+    @Override
+    public ListingDto getByIdForEditing(Long id, String username) {
+        Listing listing = listingRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Listing not found"));
+
+        if (!listing.getOwner().getUsername().equals(username)) {
+            throw new AccessDeniedException("You are not allowed to edit this listing.");
+        }
+
+        return mapToDto(listing);
+    }
+
 
     @Override
     public ListingDto updateListing(Long id, ListingDto dto, String username) { //user call it to update his service
@@ -134,6 +149,8 @@ public class ListingServiceImpl implements ListingService {
                 listing.getCity(),
                 listing.getType(),
                 listing.getOwner().getFullName(),
+                listing.getOwner().getPhoneNumber(),
+                // ✅ هنا
                 listing.getCreatedAt()
         );
     }

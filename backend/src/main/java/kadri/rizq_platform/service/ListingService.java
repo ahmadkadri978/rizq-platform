@@ -13,6 +13,7 @@ public interface ListingService {
     Page<ListingDto> search(String keyword, String city, int page, int size);
     Page<ListingDto> getMyListings(Long userId, int page, int size);
     ListingDto createListing(ListingDto dto, String username);
+    ListingDto getByIdForEditing(Long id, String username);
      ListingDto updateListing(Long id, ListingDto dto, String username);
     void deleteListing(Long id, String username);
 }
