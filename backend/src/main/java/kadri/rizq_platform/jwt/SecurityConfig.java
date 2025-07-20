@@ -1,5 +1,6 @@
 package kadri.rizq_platform.jwt;
 
+import kadri.rizq_platform.exception.CustomAccessDeniedHandler;
 import kadri.rizq_platform.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,7 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserDetailsService userDetailsService;
     private final CustomUserDetailsService customUserDetailsService;
+    private final CustomAccessDeniedHandler accessDeniedHandler;
 
     @Bean
     public AuthenticationProvider authenticationProvider() {
@@ -49,6 +51,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(eh -> eh
+                        .accessDeniedHandler(accessDeniedHandler))
                 .build();
     }
 
@@ -60,5 +64,6 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
+
 
 }

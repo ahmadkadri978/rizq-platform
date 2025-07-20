@@ -2,6 +2,7 @@ package kadri.rizq_platform.restController;
 
 import jakarta.annotation.security.PermitAll;
 import jakarta.validation.Valid;
+import kadri.rizq_platform.dto.LoginResponse;
 import kadri.rizq_platform.dto.RegistrationRequestDto;
 import kadri.rizq_platform.service.RegistrationRequestService;
 import lombok.RequiredArgsConstructor;
@@ -43,10 +44,10 @@ public class RegistrationRequestController {
     //  قبول طلب
     @PostMapping("/admin/requests/{id}/approve") //Tested ✅
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> approveRequest(@PathVariable Long id) {
+    public ResponseEntity<LoginResponse> approveRequest(@PathVariable Long id) {
         log.info("Approving registration request with ID {}", id);
         registrationRequestService.approveRequest(id);
-        return ResponseEntity.ok("Request approved.");
+        return ResponseEntity.ok(registrationRequestService.approveRequest(id));
     }
 
     //  رفض طلب
