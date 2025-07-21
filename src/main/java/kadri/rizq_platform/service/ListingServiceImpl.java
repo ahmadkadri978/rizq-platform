@@ -150,7 +150,6 @@ public class ListingServiceImpl implements ListingService {
                 listing.getType(),
                 listing.getOwner().getFullName(),
                 listing.getOwner().getPhoneNumber(),
-                listing.getOwner().getEmail(),
                 listing.getCreatedAt()
         );
     }
