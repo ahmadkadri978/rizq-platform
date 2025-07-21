@@ -1,5 +1,7 @@
 package kadri.rizq_platform.service;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import kadri.rizq_platform.dto.JwtResponse;
 import kadri.rizq_platform.dto.LoginRequest;
 
@@ -38,6 +40,7 @@ public class AuthService {
                     .orElse("USER");
 
             String token = jwtUtil.generateToken(request.username(), role);
+
             return new JwtResponse(token);
 
         } catch (AuthenticationException ex) {
