@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6caf9666-6fd8-4ac6-a447-d14979be7652" name="Changes" comment="DTO and Repositories">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/jwt/AdminSeeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/jwt/AdminSeeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/service/ListingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/service/ListingServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="6caf9666-6fd8-4ac6-a447-d14979be7652" name="Changes" comment="DTO and Repositories" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
