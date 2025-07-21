@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="rizq-platform" />
+        <module name="rezq-platform" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="rezq-platform" options="-parameters" />
       <module name="rizq-platform" options="-parameters" />
     </option>
   </component>
