@@ -1,6 +1,7 @@
 package kadri.rizq_platform.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -18,6 +19,7 @@ public class User {
     @Column(nullable = false)
     private String phoneNumber;
     @Column(nullable = false)
+
     private String email;
     @Column(nullable = false)
     private String serviceType;
