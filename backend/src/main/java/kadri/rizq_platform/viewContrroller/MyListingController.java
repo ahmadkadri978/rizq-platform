@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -55,19 +56,20 @@ public class MyListingController {
                                 @Valid @ModelAttribute ListingDto listingDto,
                                 BindingResult result,
                                 Principal principal,
-                                HttpSession session) {
+                                RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             return "edit-listing";
         }
 
         listingService.updateListing(id, listingDto, principal.getName());
-        session.setAttribute("successMessage", "Listing updated successfully!");
+        redirectAttributes.addFlashAttribute("successMessage", "Listing updated successfully!");
+
         return "redirect:/my-listings";
     }
     @PostMapping("/listings/delete/{id}")
-    public String deleteListing(@PathVariable Long id, Principal principal, HttpSession session) {
+    public String deleteListing(@PathVariable Long id, Principal principal, RedirectAttributes redirectAttributes) {
         listingService.deleteListing(id, principal.getName());
-        session.setAttribute("successMessage", "Listing deleted successfully!");
+        redirectAttributes.addFlashAttribute("successMessage", "Listing deleted successfully!");
         return "redirect:/my-listings";
     }
 

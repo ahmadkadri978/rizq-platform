@@ -12,8 +12,8 @@
     <div th:if="${listings.isEmpty()}">
         <div class="alert alert-info">You haven't added any listings yet.</div>
     </div>
-    <div th:if="${session.successMessage}" class="alert alert-success">
-        <p th:text="${session.successMessage}"></p>
+    <div th:if="${successMessage}" class="alert alert-success">
+        <p th:text="${successMessage}"></p>
     </div>
 
 

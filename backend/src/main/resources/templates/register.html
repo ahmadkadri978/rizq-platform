@@ -2,35 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="mb-4">📝 Registration Request</h2>
 
-<h2>Registration Request</h2>
+    <div th:if="${successMessage}" class="alert alert-success">
+        <p th:text="${successMessage}"></p>
+    </div>
 
-<div th:if="${successMessage}" style="color: green;">
-    <p th:text="${successMessage}"></p>
+    <form th:action="@{/auth/register}" method="post" th:object="${registrationRequest}" class="row g-3">
+        <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" th:field="*{fullName}" class="form-control" />
+            <div th:if="${#fields.hasErrors('fullName')}" class="text-danger" th:errors="*{fullName}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="text" th:field="*{phoneNumber}" class="form-control" />
+            <div th:if="${#fields.hasErrors('phoneNumber')}" class="text-danger" th:errors="*{phoneNumber}"></div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" th:field="*{email}" class="form-control" />
+            <div th:if="${#fields.hasErrors('email')}" class="text-danger" th:errors="*{email}"></div>
+        </div>
+
+
+        <div class="col-md-6">
+            <label class="form-label">Service Type</label>
+            <input type="text" th:field="*{serviceType}" class="form-control" />
+            <div th:if="${#fields.hasErrors('serviceType')}" class="text-danger" th:errors="*{serviceType}"></div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">City</label>
+            <select th:field="*{city}" class="form-select">
+                <option value="">-- Select City --</option>
+                <option value="Damascus">Damascus</option>
+                <option value="Aleppo">Aleppo</option>
+                <option value="Homs">Homs</option>
+                <option value="Latakia">Latakia</option>
+                <option value="Hama">Hama</option>
+            </select>
+            <div th:if="${#fields.hasErrors('city')}" class="text-danger" th:errors="*{city}"></div>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+            <a th:href="@{/auth/login}" class="btn btn-secondary ms-2">Already have an account? Login</a>
+        </div>
+    </form>
 </div>
-
-<form th:action="@{/register}" method="post" th:object="${registrationRequest}">
-
-    <label>Full Name:</label>
-    <input type="text" th:field="*{fullName}" />
-    <div th:if="${#fields.hasErrors('fullName')}" style="color:red;" th:errors="*{fullName}"></div>
-
-    <label>Phone Number:</label>
-    <input type="text" th:field="*{phoneNumber}" />
-    <div th:if="${#fields.hasErrors('phoneNumber')}" style="color:red;" th:errors="*{phoneNumber}"></div>
-
-    <label>Service Type:</label>
-    <input type="text" th:field="*{serviceType}" />
-    <div th:if="${#fields.hasErrors('serviceType')}" style="color:red;" th:errors="*{serviceType}"></div>
-
-    <label>City:</label>
-    <input type="text" th:field="*{city}" />
-    <div th:if="${#fields.hasErrors('city')}" style="color:red;" th:errors="*{city}"></div>
-
-    <button type="submit">Submit</button>
-</form>
-
 </body>
 </html>
+
+

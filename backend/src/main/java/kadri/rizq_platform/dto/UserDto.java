@@ -6,6 +6,7 @@ public record UserDto(
         Long id,
         String fullName,
         String phoneNumber,
+        String email,
         String serviceType,
         String city,
         String username,
