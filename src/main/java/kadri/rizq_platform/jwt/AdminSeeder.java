@@ -22,10 +22,11 @@ public class AdminSeeder implements CommandLineRunner {
     public void run(String... args) {
         if (userRepository.findByUsername("admin").isEmpty()) {
             User admin = User.builder()
-                    .fullName("System Admin")
+                    .fullName("rezq platform")
                     .username("admin")
                     .password(passwordEncoder.encode("adminpass"))
                     .phoneNumber("0999999999")
+                    .email("rezqplatform@gmail.com")
                     .serviceType("System")
                     .city("Damascus")
                     .role(Role.ADMIN)
