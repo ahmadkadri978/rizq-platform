@@ -62,7 +62,8 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/register-request","/auth/**","/error").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/register-request","/auth/**","/error","/", "/favicon.ico",
+                                "/css/**", "/js/**", "/images/**").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
                         .requestMatchers("/admin/**").hasRole("ADMIN")
 
@@ -83,9 +84,9 @@ public class SecurityConfig {
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/auth/login?logout")
                         .invalidateHttpSession(true)
-                        .deleteCookies("jwt") // 🧹 حذف الكوكي
+                        .deleteCookies("jwt")
                 )
 
                 .build();
