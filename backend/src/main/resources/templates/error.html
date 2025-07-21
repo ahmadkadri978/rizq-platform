@@ -14,7 +14,7 @@
     <h2 class="text-danger mb-3">Error</h2>
 
     <p class="text-muted fs-5" th:text="${errorMessage} ?: 'An unexpected error occurred.'"></p>
-    
+
     <a th:href="${isAdmin} ? @{/admin/requests} : @{/dashboard}"
        class="btn btn-secondary mt-3">← Back</a>
 
