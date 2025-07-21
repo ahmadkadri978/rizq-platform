@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import kadri.rizq_platform.dto.JwtResponse;
 import kadri.rizq_platform.dto.LoginRequest;
 import kadri.rizq_platform.dto.RegistrationRequestDto;
+import kadri.rizq_platform.jwt.JwtUtil;
 import kadri.rizq_platform.service.AuthService;
 import kadri.rizq_platform.service.RegistrationRequestService;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +27,18 @@ public class AuthViewController {
 
     private final RegistrationRequestService registrationRequestService;
     private final AuthService authService;
+    private final JwtUtil jwtUtil;
+
+    @GetMapping("/test-error")
+    public String testError() {
+        throw new IllegalArgumentException("🔥 This is a test error from HtmlExceptionHandler");
+    }
 
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("registrationRequest", new RegistrationRequestDto(
-                null, "", "", "", "", null));
+                null, "", "","", "", "", null));
         return "register";
     }
 
@@ -72,7 +79,10 @@ public class AuthViewController {
             session.setAttribute("token", response.token());
             String token = (String) session.getAttribute("token");
             System.out.println("TOKEN: " + token);
-            return "redirect:/dashboard";
+
+            String role = jwtUtil.extractRole(token);
+            return role.equals("ADMIN") ? "redirect:/admin/requests" : "redirect:/dashboard";
+
         } catch (IllegalArgumentException ex) {
             bindingResult.reject("error.login", ex.getMessage());
             return "login";

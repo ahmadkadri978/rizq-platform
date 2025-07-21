@@ -62,8 +62,10 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/api/register-request","/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/register-request","/auth/**","/error").permitAll()
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+
                         .requestMatchers("/api/listings/**", "/api/my-listings","/dashboard","/my-listings").hasRole("USER")
                         .anyRequest().authenticated()
                 )
@@ -73,7 +75,13 @@ public class SecurityConfig {
                 .addFilterBefore(jwtSessionAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(eh -> eh
-                        .accessDeniedHandler(accessDeniedHandler))
+                        .accessDeniedHandler((request, response, ex) -> {
+                            System.out.println("🚫 AccessDeniedHandler triggered");
+                            request.setAttribute("errorMessage", "🚫 You are not authorized to access this page.");
+                            request.getRequestDispatcher("/error").forward(request, response);
+                        })
+                )
+
                 .build();
     }
 

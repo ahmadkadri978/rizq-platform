@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Registration Requests</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4>Welcome Admin: <span th:text="${adminName}">admin</span></h4>
+        <a th:href="@{/logout}" class="btn btn-outline-danger">🚪 Logout</a>
+    </div>
+    <br>
+    <h2 class="mb-4">🧾 Pending Registration Requests</h2>
+
+    <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}"></div>
+
+    <div th:if="${requests.isEmpty()}">
+        <div class="alert alert-info">There are no pending requests.</div>
+    </div>
+
+    <div th:unless="${requests.isEmpty()}">
+        <table class="table table-bordered">
+            <thead class="table-light">
+            <tr>
+                <th>Full Name</th>
+                <th>Phone</th>
+                <th>email</th>
+                <th>City</th>
+                <th>Service Type</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="req : ${requests}">
+                <td th:text="${req.fullName}">John Doe</td>
+                <td th:text="${req.phoneNumber}">+963999999</td>
+                <td th:text="${req.email}">+963999999</td>
+                <td th:text="${req.city}">Damascus</td>
+                <td th:text="${req.serviceType}">Plumber</td>
+                <td>
+                    <form th:action="@{'/admin/requests/' + ${req.id} + '/approve'}" method="post" style="display:inline-block">
+                        <button type="submit" class="btn btn-sm btn-success">✅ Approve</button>
+                    </form>
+                    <form th:action="@{'/admin/requests/' + ${req.id} + '/reject'}" method="post" style="display:inline-block">
+                        <button type="submit" class="btn btn-sm btn-danger">❌ Reject</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <nav th:if="${totalPages > 1}" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li th:classappend="${currentPage == 0} ? 'disabled'" class="page-item">
+                    <a class="page-link" th:href="@{'/admin/requests'(page=${currentPage - 1})}">Previous</a>
+                </li>
+
+                <li th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                    th:classappend="${i == currentPage} ? 'active'" class="page-item">
+                    <a class="page-link" th:href="@{'/admin/requests'(page=${i})}" th:text="${i + 1}">1</a>
+                </li>
+
+                <li th:classappend="${currentPage + 1 >= totalPages} ? 'disabled'" class="page-item">
+                    <a class="page-link" th:href="@{'/admin/requests'(page=${currentPage + 1})}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+</body>
+</html>

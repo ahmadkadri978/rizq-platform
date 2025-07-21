@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -87,7 +88,7 @@ public class DashboardController {
             BindingResult result,
             Principal principal,
             Model model,
-            HttpSession session) {
+            RedirectAttributes redirectAttributes) {
 
         if (result.hasErrors()) {
             model.addAttribute("cities", List.of("Damascus", "Aleppo", "Homs", "Latakia", "Hama"));
@@ -100,12 +101,11 @@ public class DashboardController {
 
 
         listingService.createListing(dto , user.getUsername());
-        session.setAttribute("successMessage", "Listing created successfully!");
+        redirectAttributes.addFlashAttribute("successMessage", "Listing created successfully!");
+
 
         return "redirect:/my-listings";
     }
-
-
 
 
 }

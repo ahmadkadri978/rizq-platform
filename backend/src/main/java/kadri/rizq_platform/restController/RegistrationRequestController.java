@@ -46,8 +46,8 @@ public class RegistrationRequestController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<LoginResponse> approveRequest(@PathVariable Long id) {
         log.info("Approving registration request with ID {}", id);
-        registrationRequestService.approveRequest(id);
-        return ResponseEntity.ok(registrationRequestService.approveRequest(id));
+        LoginResponse response = registrationRequestService.approveRequest(id);
+        return ResponseEntity.ok(response);
     }
 
     //  رفض طلب

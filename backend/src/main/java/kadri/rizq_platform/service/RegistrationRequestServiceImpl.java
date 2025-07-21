@@ -27,6 +27,8 @@ public class RegistrationRequestServiceImpl implements RegistrationRequestServic
 
     private final RegistrationRequestRepository requestRepository;
     private final UserRepository userRepository;
+    private final MessageSender messageSender;
+    private final EmailSender emailSender;
     private final PasswordEncoder passwordEncoder;
 
 
@@ -50,6 +52,7 @@ public class RegistrationRequestServiceImpl implements RegistrationRequestServic
         User user = User.builder()
                 .fullName(request.getFullName())
                 .phoneNumber(request.getPhoneNumber())
+                .email(request.getEmail())
                 .serviceType(request.getServiceType())
                 .city(request.getCity())
                 .username(generatedUsername)
@@ -58,9 +61,21 @@ public class RegistrationRequestServiceImpl implements RegistrationRequestServic
                 .build();
 
         userRepository.save(user);
-
         request.setStatus(RequestStatus.APPROVED);
         requestRepository.save(request);
+
+        String message = String.format("""
+                ✅ تمت الموافقة على طلبك في منصة رزق.
+                🧾 اسم المستخدم: %s
+                🔑 كلمة المرور: %s
+                📲 قم بتسجيل الدخول فورًا وغيّر كلمة المرور الخاصة بك.
+                """, generatedUsername, rawPassword);
+        messageSender.send(request.getPhoneNumber(), message);
+
+        String email = request.getEmail();
+        emailSender.sendWelcomeEmail(request.getEmail(), generatedUsername, rawPassword);
+
+
 
         log.info("User created from request: {}, username={}, tempPassword={}", id, generatedUsername, rawPassword);
 
@@ -87,6 +102,7 @@ public class RegistrationRequestServiceImpl implements RegistrationRequestServic
         RegistrationRequest request = RegistrationRequest.builder()
                 .fullName(dto.fullName())
                 .phoneNumber(dto.phoneNumber())
+                .email(dto.email())
                 .serviceType(dto.serviceType())
                 .city(dto.city())
                 .status(RequestStatus.PENDING)
@@ -118,6 +134,7 @@ public class RegistrationRequestServiceImpl implements RegistrationRequestServic
                 request.getId(),
                 request.getFullName(),
                 request.getPhoneNumber(),
+                request.getEmail(),
                 request.getServiceType(),
                 request.getCity(),
                 request.getStatus()
