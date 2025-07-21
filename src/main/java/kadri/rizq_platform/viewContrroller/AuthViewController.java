@@ -1,5 +1,7 @@
 package kadri.rizq_platform.viewContrroller;
 
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import kadri.rizq_platform.dto.JwtResponse;
@@ -68,6 +70,7 @@ public class AuthViewController {
     @PostMapping("/login")
     public String handleLogin(@ModelAttribute("loginRequest") @Valid LoginRequest loginRequest,
                               BindingResult bindingResult,
+                              HttpServletResponse response,
                               HttpSession session,
                               RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
@@ -75,12 +78,16 @@ public class AuthViewController {
         }
 
         try {
-            JwtResponse response = authService.login(loginRequest);
-            session.setAttribute("token", response.token());
-            String token = (String) session.getAttribute("token");
-            System.out.println("TOKEN: " + token);
+            JwtResponse jwtResponse = authService.login(loginRequest);
 
-            String role = jwtUtil.extractRole(token);
+            Cookie jwtCookie = new Cookie("jwt", jwtResponse.token());
+            jwtCookie.setHttpOnly(true);
+            jwtCookie.setPath("/");
+            jwtCookie.setMaxAge(24 * 60 * 60);
+            response.addCookie(jwtCookie);
+
+
+            String role = jwtUtil.extractRole(jwtResponse.token());
             return role.equals("ADMIN") ? "redirect:/admin/requests" : "redirect:/dashboard";
 
         } catch (IllegalArgumentException ex) {

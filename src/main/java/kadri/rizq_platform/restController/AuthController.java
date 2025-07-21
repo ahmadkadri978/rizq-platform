@@ -1,5 +1,6 @@
 package kadri.rizq_platform.restController;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import kadri.rizq_platform.dto.JwtResponse;
 import kadri.rizq_platform.dto.LoginRequest;
@@ -27,7 +28,7 @@ public class AuthController {
     private final UserRepository userRepository;
 
     @PostMapping("/login") //Tested ✅
-    public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response) {
         log.info("Login attempt for user: {}", request.username());
         return ResponseEntity.ok(authService.login(request));
     }

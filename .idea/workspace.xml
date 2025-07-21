@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6caf9666-6fd8-4ac6-a447-d14979be7652" name="Changes" comment="DTO and Repositories" />
+    <list default="true" id="6caf9666-6fd8-4ac6-a447-d14979be7652" name="Changes" comment="DTO and Repositories">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/jwt/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/jwt/JwtAuthenticationFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/jwt/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/jwt/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/restController/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/restController/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/viewContrroller/AuthViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/viewContrroller/AuthViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin-requests.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin-requests.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

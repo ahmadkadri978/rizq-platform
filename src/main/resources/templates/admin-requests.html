@@ -8,7 +8,10 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h4>Welcome Admin: <span th:text="${adminName}">admin</span></h4>
-        <a th:href="@{/logout}" class="btn btn-outline-danger">🚪 Logout</a>
+        <form th:action="@{/logout}" method="post" style="display: inline;">
+            <button type="submit" class="btn btn-danger">🚪 Logout</button>
+        </form>
+
     </div>
     <br>
     <h2 class="mb-4">🧾 Pending Registration Requests</h2>

@@ -81,6 +81,12 @@ public class SecurityConfig {
                             request.getRequestDispatcher("/error").forward(request, response);
                         })
                 )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("jwt") // 🧹 حذف الكوكي
+                )
 
                 .build();
     }
