@@ -74,6 +74,7 @@ public class DashboardController {
                 null,      // type
                 "",        // ownerName
                 "",
+                "",
                 null       // createdAt
         ));
 

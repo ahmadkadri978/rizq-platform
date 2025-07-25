@@ -65,8 +65,8 @@
                     <li class="list-group-item"><strong>Phone:</strong> <span th:text="${listing.contactInfo}">000000000</span></li>
 
                 </ul>
-                <div class="card-footer text-end" th:if="${listing.ownerName == user.fullName}">
-                    <a th:href="@{'/listings/edit/' + ${listing.id}}" class="btn btn-sm btn-outline-primary me-2">✏️ Edit</a>
+                <div class="card-footer text-end" th:if="${listing.ownerUsername == user.username}">
+                <a th:href="@{'/listings/edit/' + ${listing.id}}" class="btn btn-sm btn-outline-primary me-2">✏️ Edit</a>
                     <form th:action="@{'/listings/delete/' + ${listing.id}}" method="post" style="display:inline;">
                         <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')">❌ Delete</button>
                     </form>

@@ -26,6 +26,7 @@ public record ListingDto(
         ListingType type, // SERVICE / JOB
 
         String ownerName,
+        String ownerUsername,
         String contactInfo,
 
         LocalDateTime createdAt

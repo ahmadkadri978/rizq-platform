@@ -35,12 +35,12 @@ public class HtmlExceptionHandler {
         return "error";
     }
 
-//    @ExceptionHandler(AccessDeniedException.class)
-//    public String handleAccessDenied(AccessDeniedException ex, HttpServletRequest request, Model model) {
-//        model.addAttribute("errorMessage", ex.getMessage());
-//        log.info("Error message: {}", ex.getMessage());
-//        return "error";
-//    }
+    @ExceptionHandler(AccessDeniedException.class)
+    public String handleAccessDenied(AccessDeniedException ex, HttpServletRequest request, Model model) {
+        model.addAttribute("errorMessage", ex.getMessage());
+        log.info("Error message: {}", ex.getMessage());
+        return "error";
+    }
     @ExceptionHandler(RuntimeException.class)
     public String handleRuntimeException(AccessDeniedException ex, HttpServletRequest request, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
