@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: rizq-platform
+    env: docker
+    repo: https://github.com/ahmadkadri978/rizq-platform
+    branch: main
+    autoDeploy: true
+    envVars:
+      - fromGroup: rezq-platform-env
