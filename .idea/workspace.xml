@@ -7,7 +7,11 @@
     <list default="true" id="6caf9666-6fd8-4ac6-a447-d14979be7652" name="Changes" comment="DTO and Repositories">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/dto/ListingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/dto/ListingDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/exception/HtmlExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/exception/HtmlExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/service/ListingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/service/ListingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/viewContrroller/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/kadri/rizq_platform/viewContrroller/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +86,7 @@
     <configuration name="RizqPlatformApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="kadri.rizq_platform.RizqPlatformApplication" />
       <module name="rezq-platform" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=h2 " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="kadri.rizq_platform.*" />
