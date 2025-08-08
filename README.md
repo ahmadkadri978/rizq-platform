@@ -1,1 +1,0 @@
-"# Rizq Platform" 
