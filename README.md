@@ -69,5 +69,5 @@ java -jar target/*.jar
 
 ---
 
-📧 **Email :`ahmadkadri@web.de`  
+📧 **Email** :`ahmadkadri@web.de`  
 🔗 **Portfolio**: [https://ahmadkadri978.github.io/portfolio](https://ahmadkadri978.github.io/portfolio)
