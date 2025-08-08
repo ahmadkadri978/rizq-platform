@@ -61,7 +61,7 @@ It allows users to register, browse, and publish service/job listings within the
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/your-username/rizq-platform.git
+git clone https://github.com/ahmadkadri978/rizq-platform.git
 cd rizq-platform
 ```
 
