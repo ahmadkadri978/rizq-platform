@@ -3,6 +3,12 @@
 **Rizq Platform** a platform designed to support local work and daily services.  
 It allows users to register, browse, and publish service/job listings within their city, with a simple and user-friendly interface.
 
+## 🧩 Component Diagram
+
+This diagram illustrates the internal structure of the **Rizq Platform** application, showing the main components, their responsibilities, and interactions.
+
+![Component Diagram](component-diagram.png)
+
 ---
 
 ## 🚀 Live Demo
@@ -32,6 +38,9 @@ It allows users to register, browse, and publish service/job listings within the
   - Authentication is handled via **JWT Tokens**.
   - Users with `ADMIN` role can access the Admin Dashboard to approve/reject registration requests.
    ---
+   ## 📦 Architecture
+
+![Architecture Diagram](Rizk-Container-diagram.png)
 
 ## 📌 Features
 - **User Registration & Login** (with role-based access: `ADMIN` and `USER`)
