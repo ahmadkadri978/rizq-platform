@@ -38,9 +38,9 @@ This diagram illustrates the internal structure of the **Rizq Platform** applica
   - Authentication is handled via **JWT Tokens**.
   - Users with `ADMIN` role can access the Admin Dashboard to approve/reject registration requests.
    ---
-   ## 📦 Architecture
+   ## 📦 Container Diagram
 
-![Architecture Diagram](Rizk-Container-diagram.png)
+![Container Diagram](Rizk-Container-diagram.png)
 
 ## 📌 Features
 - **User Registration & Login** (with role-based access: `ADMIN` and `USER`)
