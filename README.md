@@ -61,7 +61,7 @@ This diagram illustrates the internal structure of the **Rizq Platform** applica
 - **Database:** PostgreSQL (Render)
 - **Authentication:** Spring Security + JWT
 - **Build Tool:** Maven
-- **Deployment:** Docker + Render
+- **Deployment:** Render
 - **CI/CD**: GitHub Actions
 
 ---
