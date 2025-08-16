@@ -24,7 +24,8 @@ This diagram illustrates the internal structure of the **Rizq Platform** applica
   - Once approved, you will receive an **Email** containing:
     - Your **Username**
     - Your **Password**
-  - The email also includes a short welcome message.
+    - just temporarily 
+  
 
 3. **Login**
   - Use the provided username and password to log in.
