@@ -21,6 +21,6 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn -B clean install -f backend/pom.xml -DskipTests
+        run: mvn -B clean install -f pom.xml -DskipTests
 
 
