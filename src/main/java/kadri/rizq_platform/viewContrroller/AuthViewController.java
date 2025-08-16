@@ -80,11 +80,14 @@ public class AuthViewController {
         try {
             JwtResponse jwtResponse = authService.login(loginRequest);
 
-            Cookie jwtCookie = new Cookie("jwt", jwtResponse.token());
-            jwtCookie.setHttpOnly(true);
-            jwtCookie.setPath("/");
-            jwtCookie.setMaxAge(24 * 60 * 60);
-            response.addCookie(jwtCookie);
+            var cookie = ResponseCookie.from("jwt", jwtResponse.token())
+    .httpOnly(true)
+    .secure(true) // in prod
+    .sameSite("Strict")
+    .path("/")
+    .maxAge(Duration.ofHours(1))
+    .build();
+response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
 
 
             String role = jwtUtil.extractRole(jwtResponse.token());
