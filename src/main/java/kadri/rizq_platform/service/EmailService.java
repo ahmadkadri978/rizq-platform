@@ -11,6 +11,10 @@ public class EmailService implements EmailSender {
 
     private final JavaMailSender mailSender;
 
+    public EmailService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
+
     public void sendWelcomeEmail(String to, String username, String password) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
